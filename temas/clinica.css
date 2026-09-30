@@ -1,0 +1,19 @@
+/* Opcion 1 · Clinica blanca: limpio, redondeado, barra de progreso con puntos. */
+:root {
+  --fondo: #f3f7fc; --panel: #fff; --tinta: #0d2340; --tenue: #6b7c93; --acento: #1976d2; --acento2: #1976d2; --acento-txt: #fff;
+  --suave: #e3eefb; --suave-txt: #1976d2; --borde: #e5ebf3; --alerta: #b45309; --alerta-suave: #fef3c7; --campo: #f5f8fc;
+  --radio: 16px; --radio-chico: 99px; --sombra: 0 6px 20px rgba(13,35,64,.06); --fuente: "Plus Jakarta Sans", sans-serif;
+  --login-fondo: linear-gradient(160deg, #dbe9fa, #eef5fd 60%, #f3f7fc);
+}
+.pasos { position: relative; display: grid; grid-template-columns: repeat(7, 1fr); }
+.pasos::before { content: ""; position: absolute; left: 7%; right: 7%; top: 9px; height: 6px; border-radius: 99px; background: #edf1f6; }
+.pasos .llena { position: absolute; left: 7%; top: 9px; height: 6px; border-radius: 99px; width: 86%; background: linear-gradient(90deg, #5e90d0, var(--acento));
+  transform-origin: left; transform: scaleX(var(--p)); animation: crece 1.1s cubic-bezier(.2,1,.3,1) backwards; }
+@keyframes crece { from { transform: scaleX(0); } }
+.p { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 12px; color: var(--tenue); position: relative; text-align: center; }
+.p i { width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 3px solid #dbe3ee; }
+.p.hecho i { background: var(--acento); border-color: var(--acento); } .p.hecho { color: var(--tinta); }
+.p.ahora i { border: 6px solid var(--acento); animation: anillo 1.8s infinite; }
+.p.ahora { color: var(--acento); font-weight: 800; }
+@keyframes anillo { 0% { box-shadow: 0 0 0 0 rgba(25,118,210,.4); } 70%, 100% { box-shadow: 0 0 0 12px rgba(25,118,210,0); } }
+@media (max-width: 760px) { .p { font-size: 9px; } .p i { width: 18px; height: 18px; } .pasos::before, .pasos .llena { top: 6px; } }
